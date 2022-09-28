@@ -28,11 +28,13 @@ export class User1664215326596 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'date',
+            type: 'timestamptz',
+            default: 'now()',
           },
           {
             name: 'updated_at',
-            type: 'date',
+            type: 'timestamptz',
+            default: 'now()',
           },
         ],
       })
@@ -46,7 +48,7 @@ export class User1664215326596 implements MigrationInterface {
     const date = new Date().toJSON();
 
     await queryRunner.query(
-      `INSERT INTO "user" (ID,NAME,EMAIL,PASSWORD,CREATED_AT,UPDATED_AT) VALUES ('${id}', '${name}', '${email}', '${password}', '${date}', '${date}')`
+      `INSERT INTO "user" (ID,NAME,EMAIL,PASSWORD) VALUES ('${id}', '${name}', '${email}', '${password}')`
     );
   }
 

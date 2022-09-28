@@ -23,10 +23,10 @@ export class User {
   @Column()
   password: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   created_at: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   updated_at: string;
 
   @BeforeInsert()
@@ -44,7 +44,5 @@ export class User {
 
   constructor() {
     if (!this.id) this.id = v4();
-    this.created_at = new Date().toJSON();
-    this.updated_at = new Date().toJSON();
   }
 }

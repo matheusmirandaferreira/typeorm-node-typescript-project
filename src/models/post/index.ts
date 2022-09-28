@@ -1,5 +1,4 @@
 import {
-  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
@@ -20,19 +19,16 @@ export class Post {
   @Column()
   description: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz', generated: true })
   created_at: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz', generated: true })
   updated_at: string;
 
   @Column()
   images: string;
 
-  // @BeforeInsert()
   constructor() {
     if (!this.id) this.id = v4();
-    this.created_at = new Date().toJSON();
-    this.updated_at = new Date().toJSON();
   }
 }

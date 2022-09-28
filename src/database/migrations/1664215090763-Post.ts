@@ -26,11 +26,13 @@ export class Post1664215090763 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'date',
+            type: 'timestamptz',
+            default: 'now()',
           },
           {
             name: 'updated_at',
-            type: 'date',
+            type: 'timestamptz',
+            default: 'now()',
           },
         ],
       })

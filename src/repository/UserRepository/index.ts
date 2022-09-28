@@ -2,9 +2,9 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import * as emailValidator from 'email-validator';
 
-import { User } from '../models';
-import { AppDataSource } from '../database';
-import { fieldsErrors } from '../utils/fieldsErrors';
+import { User } from '../../models';
+import { AppDataSource } from '../../database';
+import { fieldsErrors } from '../../utils/fieldsErrors';
 
 type LoginParams = {
   email: string;
@@ -60,6 +60,6 @@ export class UserRepository {
 
     await userRepository.save(user);
 
-    return user;
+    return Object({ status: '00', data: user });
   }
 }

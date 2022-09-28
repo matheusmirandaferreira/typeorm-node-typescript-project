@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { PostRepository } from '../repository/postRepository';
+import { PostRepository } from '../../repository';
 
 type Params = {
   title: string;
@@ -48,5 +48,35 @@ export class PostController {
         .status(500)
         .json({ message: 'Houve um erro ao carregar os post' });
     }
+  }
+
+  async deletePost(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+
+      const result = await repo.deletePost({ id });
+
+      if (result instanceof Error) {
+        return res.status(400).json({ message: result.message });
+      }
+
+      return res.json(result);
+    } catch (err) {
+      console.log('err', err);
+    }
+  }
+
+  async updatePost(req: Request, res: Response) {
+    const { id } = req.params;
+    const { title, description } = req.body;
+    const images = req.files as any[];
+
+    const result = await repo.updatePost({ id, description, images, title });
+
+    if (result instanceof Error) {
+      return res.status(400).json({ message: result.message });
+    }
+
+    return res.json(result);
   }
 }
