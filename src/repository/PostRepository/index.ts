@@ -104,6 +104,9 @@ export class PostRepository {
 
     await postRepository.save(post);
 
-    return Object({ status: '00', data: post });
+    return Object({
+      status: '00',
+      data: { ...post, images: post.images.split(', ') },
+    });
   }
 }
