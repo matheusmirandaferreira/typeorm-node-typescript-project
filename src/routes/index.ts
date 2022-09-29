@@ -9,7 +9,7 @@ import { UserController } from '../controllers/UserController';
 const routes = Router();
 
 routes.use(express.json());
-routes.use('/public/storage', express.static('public/storage'));
+routes.use('/storage/public', express.static('storage/public'));
 
 routes.post('/api/auth', new UserController().login);
 

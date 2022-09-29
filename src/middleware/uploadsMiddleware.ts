@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 
 const storage = multer.diskStorage({
   destination: function (_, __, cb) {
-    cb(null, 'public/storage/');
+    cb(null, 'storage/public/');
   },
   filename: function (req: Request, file: Express.Multer.File, cb) {
     const token = req.headers.authorization.split(' ')[1];
