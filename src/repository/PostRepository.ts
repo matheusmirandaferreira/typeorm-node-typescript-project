@@ -1,6 +1,6 @@
-import { Post } from '../../models';
-import { AppDataSource } from '../../database';
-import { fieldsErrors } from '../../utils/fieldsErrors';
+import { Post } from '../models/Post';
+import { AppDataSource } from '../database';
+import { fieldsErrors } from '../utils/fieldsErrors';
 
 type CreatePostParams = {
   title: string;

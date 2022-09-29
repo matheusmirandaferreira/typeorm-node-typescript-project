@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { PostRepository } from '../../repository';
+import { PostRepository } from '../repository/PostRepository';
 
 type Params = {
   title: string;

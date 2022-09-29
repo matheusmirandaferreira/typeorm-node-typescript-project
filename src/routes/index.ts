@@ -1,6 +1,10 @@
 import express, { Router } from 'express';
-import { authMiddleware, uploads } from '../middleware';
-import { PostController, UserController } from '../controllers';
+
+import { authMiddleware } from '../middleware/authMiddleware';
+import { uploadsMiddleware } from '../middleware/uploadsMiddleware';
+
+import { PostController } from '../controllers/PostController';
+import { UserController } from '../controllers/UserController';
 
 const routes = Router();
 
@@ -21,7 +25,7 @@ routes.post(
   '/api/post/create',
   authMiddleware,
   (req, res, next) => {
-    const imageUpload = uploads.array('image');
+    const imageUpload = uploadsMiddleware.array('image');
     imageUpload(req, res, (err) => {
       if (err instanceof Error)
         return res.status(422).json({ message: err.message });

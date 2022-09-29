@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
-import { Post, User } from '../models';
+import { Post } from '../models/Post';
+import { User } from '../models/User';
 
 dotenv.config();
 

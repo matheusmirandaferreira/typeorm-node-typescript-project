@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { UserRepository } from '../../repository';
+import { UserRepository } from '../repository/UserRepository';
 
 const repo = new UserRepository();
 

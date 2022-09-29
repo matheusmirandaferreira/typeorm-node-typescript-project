@@ -26,6 +26,6 @@ const fileFilter = (_: Request, file: Express.Multer.File, cb) => {
   }
 };
 
-const uploads = multer({ storage, fileFilter: fileFilter });
+const uploadsMiddleware = multer({ storage, fileFilter: fileFilter });
 
-export { uploads };
+export { uploadsMiddleware };
