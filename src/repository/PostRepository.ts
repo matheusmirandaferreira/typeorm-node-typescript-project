@@ -42,6 +42,7 @@ export class PostRepository {
       })
     );
 
+    // auto transaction
     const result = postRepository.create({
       id,
       title,
