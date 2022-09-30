@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class Post1664215090763 implements MigrationInterface {
+export class Image1664548120981 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'post',
+        name: 'image',
         columns: [
           {
             name: 'id',
@@ -12,23 +12,20 @@ export class Post1664215090763 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'title',
-            type: 'varchar',
-            isUnique: true,
-          },
-          {
-            name: 'description',
+            name: 'url',
             type: 'varchar',
           },
           {
-            name: 'created_at',
-            type: 'timestamptz',
-            default: 'now()',
+            name: 'post_id',
+            type: 'varchar',
           },
+        ],
+        foreignKeys: [
           {
-            name: 'updated_at',
-            type: 'timestamptz',
-            default: 'now()',
+            name: 'fk_post_id',
+            columnNames: ['post_id'],
+            referencedTableName: 'post',
+            referencedColumnNames: ['id'],
           },
         ],
       })
@@ -36,6 +33,6 @@ export class Post1664215090763 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('post');
+    await queryRunner.dropTable('images');
   }
 }

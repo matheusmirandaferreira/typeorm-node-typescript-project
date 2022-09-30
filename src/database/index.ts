@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
+import { Image } from '../models/Image';
 import { Post } from '../models/Post';
 import { User } from '../models/User';
 
@@ -12,7 +13,7 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
-  entities: [Post, User],
+  entities: [Image, Post, User],
   migrations: ['src/database/migrations/*.ts'],
 });
 

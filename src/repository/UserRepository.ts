@@ -21,6 +21,12 @@ const userRepository = AppDataSource.getRepository(User);
 
 export class UserRepository {
   async login({ email, password }: LoginParams): Promise<Error | User> {
+    if (!email || !password) {
+      return new Error('Preencha todos os campos', {
+        cause: fieldsErrors({ email, password }),
+      });
+    }
+
     const user = await userRepository.findOneBy({ email });
 
     if (!user) return new Error('Usuário não encontrado');

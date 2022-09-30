@@ -11,7 +11,9 @@ export class UserController {
     const result = await repo.login({ email, password });
 
     if (result instanceof Error)
-      return res.status(400).json({ message: result.message });
+      return res
+        .status(400)
+        .json({ message: result.message, errors: result.cause });
 
     return res.json(result);
   }
